@@ -1,6 +1,6 @@
 import Track from "./Track";
 
-function Tracklist({ tracks, onAdd, onRemove, isRemoval }) {
+function Tracklist({ tracks, onAdd, onRemove, isRemoval, playlistTracks }) {
   return (
     <div>
       {tracks.map((track) => (
@@ -10,6 +10,7 @@ function Tracklist({ tracks, onAdd, onRemove, isRemoval }) {
           onAdd={onAdd}
           onRemove={onRemove}
           isRemoval={isRemoval}
+          isAdded={playlistTracks?.some(t => t.id === track.id)}
         />
       ))}
     </div>

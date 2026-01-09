@@ -1,14 +1,15 @@
 import Tracklist from "./TrackList";
 import styles from "./GeneralContainer.module.css";
 
-function SearchResults({ searchResults, onAdd }) {
+function SearchResults({ resultsTracks, onAdd, playlistTracks}) {
   return (
     <div className={styles.generalContentBox}>
       <h2>Search Results</h2>
       <Tracklist
-        tracks={searchResults}
+        tracks={resultsTracks}
         onAdd={onAdd}
         isRemoval={false}
+        playlistTracks={playlistTracks}
       />
     </div>
   );

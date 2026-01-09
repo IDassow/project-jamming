@@ -1,4 +1,5 @@
 import { useState } from "react";
+import styles from "./GeneralContainer.module.css";
 
 function SearchBar() {
   const [term, setTerm] = useState("");
@@ -8,8 +9,8 @@ function SearchBar() {
   };
 
   return (
-    <div>
-      <input
+    <div >
+      <input className={styles.inputBox}
         placeholder="Search for a song..."
         value={term}
         onChange={(e) => setTerm(e.target.value)}

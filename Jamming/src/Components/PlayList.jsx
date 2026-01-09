@@ -1,15 +1,16 @@
 import Tracklist from "./TrackList";
 import styles from "./GeneralContainer.module.css";
-function Playlist({ name, tracks, onRemove, onNameChange }) {
+function Playlist({ name, playlistTracks, onRemove, onNameChange }) {
   return (
     <div className={styles.generalContentBox}>
-      <input
+      <input className={styles.inputBox}
+        placeholder="My Playlist"
         value={name}
         onChange={(e) => onNameChange(e.target.value)}
       />
 
       <Tracklist
-        tracks={tracks}
+        tracks={playlistTracks}
         onRemove={onRemove}
         isRemoval={true}
       />

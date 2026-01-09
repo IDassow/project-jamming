@@ -1,42 +1,51 @@
 import { useState } from 'react'
 import './App.css'
+import mockTrackList from './mockDataset';
 import SearchBar from "./Components/SearchBar";
 import SearchResults from "./Components/SearchResults";
 import Playlist from './Components/PlayList';
 
 function App() {
-  // eslint-disable-next-line no-unused-vars
-  const [searchResults, setSearchResults] = useState([]);
-  const [playlistName, setPlaylistName] = useState("My Playlist");
+  
+  const [searchResults, setSearchResults] = useState(mockTrackList);
+  const [playlistName, setPlaylistName] = useState("");
   const [playlistTracks, setPlaylistTracks] = useState([]);
 
   const addTrack = (track) => {
     if (playlistTracks.find(saved => saved.id === track.id)) return;
+    
     setPlaylistTracks([...playlistTracks, track]);
   };
 
   const removeTrack = (track) => {
+    
     setPlaylistTracks(
       playlistTracks.filter(saved => saved.id !== track.id)
     );
+  };
+  const search = (term) => {
+    const results = mockTrackList.filter(track =>
+      track.name.toLowerCase().includes(term.toLowerCase()) ||
+      track.artist.toLowerCase().includes(term.toLowerCase())
+    );
+    setSearchResults(results);
   };
 
   return (
     <>
        <h1>Jammming</h1>
 
-      <SearchBar />
+      <SearchBar onSearch={search}/>
 
       <div style={{ display: "flex", justifyContent: "space-around", padding:10, width:"100%"}}>
-        
-          <SearchResults 
-          searchResults={searchResults}
+        <SearchResults 
+          resultsTracks={searchResults}
           onAdd={addTrack}
+          playlistTracks={playlistTracks}
         />
-
-          <Playlist
+        <Playlist
           name={playlistName}
-          tracks={playlistTracks}
+          playlistTracks={playlistTracks}
           onRemove={removeTrack}
           onNameChange={setPlaylistName}
         />
