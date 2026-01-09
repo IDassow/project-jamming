@@ -1,11 +1,12 @@
 import { useState } from "react";
 import styles from "./GeneralContainer.module.css";
 
-function SearchBar() {
+function SearchBar(props) {
   const [term, setTerm] = useState("");
 
   const handleSearch = () => {
     console.log("Searching for:", term);
+    props.onSearch(term);
   };
 
   return (

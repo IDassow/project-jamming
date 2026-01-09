@@ -1,7 +1,7 @@
 import styles from "./GeneralContainer.module.css";
 function Track({ track, onAdd, onRemove, isRemoval, isAdded }) {
   const handleClick = () => {
-    if (isAdded) return;
+    //if (isAdded) return;
     isRemoval ? onRemove(track) : onAdd(track);
   }
 
@@ -15,8 +15,8 @@ function Track({ track, onAdd, onRemove, isRemoval, isAdded }) {
           onClick={handleClick}
           disabled={isAdded}
           style={{
-            opacity: isAdded ? 0.4 : 1,
-            cursor: isAdded ? "not-allowed" : "pointer"
+            opacity: isAdded ? 0.6 : 1,
+            color: isAdded ? "greenyellow":"inherit",
           }}
         >
           {isAdded ? "✓" : "+"}

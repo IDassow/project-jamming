@@ -15,7 +15,7 @@ function Playlist({ name, playlistTracks, onRemove, onNameChange }) {
         isRemoval={true}
       />
 
-      <button>Save To Spotify</button>
+      <button style={{backgroundColor:"green"}}>Save To Spotify</button>
     </div>
   );
 }
