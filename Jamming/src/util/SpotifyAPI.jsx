@@ -1,6 +1,7 @@
 
-const clientId = import.meta.env.REACT_APP_SPOTIFY_CLIENT_ID
-const redirectUri = "http://localhost:3000/";
+const clientId = import.meta.env.VITE_SPOTIFY_CLIENT_ID;
+console.log("Client ID:", clientId);
+const redirectUri = "http://127.0.0.1:5173/";
 let accessToken;
 
 const Spotify = {
@@ -25,13 +26,14 @@ const Spotify = {
       `&response_type=token` +
       `&scope=playlist-modify-public` +
       `&redirect_uri=${encodeURIComponent(redirectUri)}`;
+      console.log(authUrl);
 
     window.location = authUrl;
   },
 
   async search(term) {
     if (!term) return [];
-
+    console.log("Client ID:", clientId);
     const token = await this.getAccessToken();
 
     const response = await fetch(

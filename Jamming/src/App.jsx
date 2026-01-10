@@ -29,6 +29,7 @@ function App() {
   };
 
   const search = async (term) => {
+    
     try {
       const results = await Spotify.search(term);
       setSearchResults(results);
