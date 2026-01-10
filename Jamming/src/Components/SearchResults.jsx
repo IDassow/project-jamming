@@ -4,7 +4,7 @@ import styles from "./GeneralContainer.module.css";
 function SearchResults({ resultsTracks, onAdd, playlistTracks}) {
   return (
     <div className={styles.generalContentBox}>
-      <h2>Search Results</h2>
+      <h2 style={{textAlign: "left"}} >Search Results</h2>
       <Tracklist
         tracks={resultsTracks}
         onAdd={onAdd}

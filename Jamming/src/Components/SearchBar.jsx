@@ -10,12 +10,14 @@ function SearchBar(props) {
   };
 
   return (
-    <div >
+    <div style={{display:"inline-block", justifyContent: "center",padding: 10}}>
       <input className={styles.inputBox}
         placeholder="Search for a song..."
         value={term}
         onChange={(e) => setTerm(e.target.value)}
+        onKeyDown={e => e.key === "Enter" && props.onSearch(term)}
       />
+      <div style={{ justifyContent: "center",padding: 10}}></div>
       <button onClick={handleSearch}>Search</button>
     </div>
   );
