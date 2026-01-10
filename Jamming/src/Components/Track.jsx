@@ -1,31 +1,33 @@
 import styles from "./GeneralContainer.module.css";
 function Track({ track, onAdd, onRemove, isRemoval, isAdded }) {
   const handleClick = () => {
-    //if (isAdded) return;
+    
     isRemoval ? onRemove(track) : onAdd(track);
   }
 
-  return (
-    <div className={styles.trackContent} >
-      
-      <h3>{track.name}</h3>
-      <p>{track.artist} | {track.album}</p>
-       {!isRemoval && (
-        <button
+  const resultList = ( 
+      <button
           onClick={handleClick}
-          disabled={isAdded}
+          //disabled={isAdded}
           style={{
             opacity: isAdded ? 0.6 : 1,
             color: isAdded ? "greenyellow":"inherit",
           }}
         >
           {isAdded ? "✓" : "+"}
-        </button>
-      )}
+      </button>
+  );
+  const playList = (
+    <button onClick={() => onRemove(track)}>-</button>
+  );
 
-      {isRemoval && (
-        <button onClick={() => onRemove(track)}>-</button>
-      )}
+  return (
+    <div className={styles.trackContent} >
+      <div style={{textAlign:"left",}}>
+        <h3>{track.name}</h3>
+        <p>{track.artist} | {track.album}</p>
+      </div>
+      {!isRemoval ? resultList : playList}
     </div>
   );
 }

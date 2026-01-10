@@ -12,7 +12,12 @@ function App() {
   const [playlistTracks, setPlaylistTracks] = useState([]);
 
   const addTrack = (track) => {
-    if (playlistTracks.find(saved => saved.id === track.id)) return;
+    if (playlistTracks.find(saved => saved.id === track.id)){
+      setPlaylistTracks(
+        playlistTracks.filter(saved => saved.id !== track.id)
+      );
+      return;
+    }
     
     setPlaylistTracks([...playlistTracks, track]);
   };
